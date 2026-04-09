@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Academic Portfolio</title>
+  <title>Anushka Joshi | Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     body {
@@ -20,27 +20,48 @@
       justify-content: space-between;
       align-items: center;
     }
-    header h1 { margin: 0; font-size: 22px; }
     nav a {
       color: white;
       margin-left: 20px;
       text-decoration: none;
       font-size: 14px;
     }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 60px;
+      padding: 80px 40px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .profile-img {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    .hero-text h1 {
+      margin: 0;
+      font-size: 32px;
+    }
+
+    .hero-text p {
+      margin-top: 10px;
+      color: #4b5563;
+      line-height: 1.6;
+    }
+
     section {
       padding: 60px 40px;
       max-width: 1000px;
       margin: auto;
     }
-    .hero {
-      text-align: center;
-      padding: 80px 20px;
-    }
-    .hero h2 {
-      font-size: 36px;
-      margin-bottom: 10px;
-    }
-    .hero p { color: #6b7280; }
+
     .card {
       background: white;
       padding: 20px;
@@ -48,6 +69,7 @@
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
+
     footer {
       text-align: center;
       padding: 20px;
@@ -55,12 +77,19 @@
       color: white;
       font-size: 14px;
     }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>Your Name</h1>
+  <h2>Anushka Joshi</h2>
   <nav>
     <a href="#about">About</a>
     <a href="#research">Research</a>
@@ -70,34 +99,47 @@
 </header>
 
 <section class="hero">
-  <h2>Hello, I'm Your Name</h2>
-  <p>Researcher in AI & Earthquake Studies</p>
+  <img src="profile.jpg" alt="Anushka Joshi" class="profile-img">
+
+  <div class="hero-text">
+    <h1>Anushka Joshi</h1>
+    <p>
+      Researcher in Earthquake Engineering and Artificial Intelligence, working on
+      early seismic signal analysis, PGA prediction, and deep learning models.
+    </p>
+    <p>
+      Affiliation: IIT Roorkee | Computer Science & Engineering
+    </p>
+  </div>
 </section>
 
 <section id="about">
   <h2>About Me</h2>
   <div class="card">
-    <p>Short bio about your research interests, background, and current work.</p>
+    <p>
+      I work at the intersection of seismology and AI, focusing on real-time
+      earthquake analysis and predictive modeling using deep learning techniques.
+    </p>
   </div>
 </section>
 
 <section id="research">
   <h2>Research</h2>
   <div class="card">
-    <h3>Research Area 1</h3>
-    <p>Description of your work.</p>
+    <h3>Earthquake Early Warning</h3>
+    <p>Developing AI models for rapid prediction of ground motion parameters.</p>
   </div>
   <div class="card">
-    <h3>Research Area 2</h3>
-    <p>Description of your work.</p>
+    <h3>Deep Learning for Seismic Signals</h3>
+    <p>Using LSTM, attention, and generative models for waveform analysis.</p>
   </div>
 </section>
 
 <section id="projects">
   <h2>Projects</h2>
   <div class="card">
-    <h3>Project Title</h3>
-    <p>Short description + GitHub link.</p>
+    <h3>SeismoSense</h3>
+    <p>AI-based framework for early PGA prediction.</p>
   </div>
 </section>
 
@@ -110,7 +152,7 @@
 </section>
 
 <footer>
-  <p>© 2026 Your Name</p>
+  <p>© 2026 Anushka Joshi</p>
 </footer>
 
 </body>
