@@ -2,158 +2,167 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title>Your Name | Professor</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anushka Joshi | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Google Font (Serif for academic feel) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: #f9fafb;
-      color: #111827;
-    }
-    header {
-      background: #111827;
-      color: white;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    nav a {
-      color: white;
-      margin-left: 20px;
-      text-decoration: none;
-      font-size: 14px;
-    }
-
-    .hero {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 60px;
-      padding: 80px 40px;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    .profile-img {
-      width: 220px;
-      height: 220px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-    }
-
-    .hero-text h1 {
-      margin: 0;
-      font-size: 32px;
-    }
-
-    .hero-text p {
-      margin-top: 10px;
-      color: #4b5563;
+      color: #111;
+      background: #fff;
       line-height: 1.6;
     }
 
-    section {
-      padding: 60px 40px;
-      max-width: 1000px;
-      margin: auto;
+    .container {
+      display: flex;
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 20px;
     }
 
-    .card {
-      background: white;
-      padding: 20px;
+    /* LEFT SIDEBAR */
+    .sidebar {
+      width: 260px;
+      padding-right: 40px;
+    }
+
+    .sidebar img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
       margin-bottom: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #111827;
-      color: white;
+    .name {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    .title {
       font-size: 14px;
+      color: #555;
+      margin: 5px 0 15px;
     }
 
+    .links a {
+      display: block;
+      text-decoration: none;
+      color: #111;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    /* RIGHT CONTENT */
+    .content {
+      flex: 1;
+      max-width: 700px;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin: 0 0 10px;
+    }
+
+    ul {
+      padding-left: 18px;
+      margin-top: 5px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    /* Responsive */
     @media (max-width: 768px) {
-      .hero {
+      .container {
         flex-direction: column;
-        text-align: center;
+      }
+
+      .sidebar {
+        width: 100%;
+        margin-bottom: 30px;
       }
     }
   </style>
 </head>
+
 <body>
 
-<header>
-  <h2>Anushka Joshi</h2>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#research">Research</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
+<div class="container">
 
-<section class="hero">
-  <img src="profile.jpg" alt="Anushka Joshi" class="profile-img">
+  <!-- LEFT -->
+  <div class="sidebar">
+    <img src="your-photo.jpg" alt="Profile Photo">
 
-  <div class="hero-text">
-    <h1>Anushka Joshi</h1>
+    <div class="name">Dr. Your Name</div>
+    <div class="title">
+      Assistant Professor<br>
+      Department of Computer Science<br>
+      IIT Roorkee
+    </div>
+
+    <div class="links">
+      <a href="#">📄 CV</a>
+      <a href="#">📚 Google Scholar</a>
+      <a href="#">💻 GitHub</a>
+      <a href="mailto:youremail@domain.com">✉ Email</a>
+    </div>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="content">
+
+    <h2>About</h2>
     <p>
-      Researcher in Earthquake Engineering and Artificial Intelligence, working on
-      early seismic signal analysis, PGA prediction, and deep learning models.
+      I work in earthquake informatics, machine learning, and time-series modeling.
+      My research focuses on developing robust models for seismic signal analysis.
     </p>
+
+    <h2>Research Interests</h2>
     <p>
-      Affiliation: IIT Roorkee | Computer Science & Engineering
+      Seismology, Deep Learning, Time-Series Modeling, Generative Models
     </p>
-  </div>
-</section>
 
-<section id="about">
-  <h2>About Me</h2>
-  <div class="card">
-    <p>
-      I work at the intersection of seismology and AI, focusing on real-time
-      earthquake analysis and predictive modeling using deep learning techniques.
-    </p>
-  </div>
-</section>
+    <h2>Selected Publications</h2>
+    <ul>
+      <li>Author et al., “Paper Title,” <i>Journal Name</i>, 2025.</li>
+      <li>Author et al., “Paper Title,” <i>Conference Name</i>, 2024.</li>
+      <li>Author et al., “Paper Title,” <i>Journal Name</i>, 2023.</li>
+    </ul>
 
-<section id="research">
-  <h2>Research</h2>
-  <div class="card">
-    <h3>Earthquake Early Warning</h3>
-    <p>Developing AI models for rapid prediction of ground motion parameters.</p>
-  </div>
-  <div class="card">
-    <h3>Deep Learning for Seismic Signals</h3>
-    <p>Using LSTM, attention, and generative models for waveform analysis.</p>
-  </div>
-</section>
+    <h2>Courses Taught</h2>
+    <ul>
+      <li>Deep Learning</li>
+      <li>Machine Learning</li>
+      <li>Data Structures</li>
+    </ul>
 
-<section id="projects">
-  <h2>Projects</h2>
-  <div class="card">
-    <h3>SeismoSense</h3>
-    <p>AI-based framework for early PGA prediction.</p>
-  </div>
-</section>
+    <h2>Students Mentored</h2>
+    <ul>
+      <li><b>PhD:</b> Student A (Topic)</li>
+      <li><b>MTech:</b> Student B (Topic)</li>
+      <li><b>BTech:</b> Student C (Topic)</li>
+    </ul>
 
-<section id="contact">
-  <h2>Contact</h2>
-  <div class="card">
-    <p>Email: your.email@example.com</p>
-    <p>GitHub: github.com/yourusername</p>
   </div>
-</section>
 
-<footer>
-  <p>© 2026 Anushka Joshi</p>
-</footer>
+</div>
 
 </body>
 </html>
