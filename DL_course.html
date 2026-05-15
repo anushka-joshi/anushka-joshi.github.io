@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Deep Learning — Course</title>
+  <img src="your_image.jpg" alt="Course Image" width="300">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:         #ffffff;
+      --surface:    #f4f5f8;
+      --border:     #dde1ec;
+      --accent:     #3d5fe0;
+      --accent2:    #9b59d4;
+      --text:       #1a1d2e;
+      --muted:      #6b7299;
+      --nav-h:      52px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 18px;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* ── TOP BANNER ── */
+    .banner {
+      background: linear-gradient(135deg, #eef1fb 0%, #f0f3ff 40%, #edf1ff 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 56px 0 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 70% 50%, rgba(61,95,224,.08) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 20% 80%, rgba(155,89,212,.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .banner::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(61,95,224,.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(61,95,224,.05) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(61,95,224,.10);
+      border: 1px solid rgba(61,95,224,.25);
+      border-radius: 4px;
+      padding: 4px 10px;
+      margin-bottom: 22px;
+    }
+    .badge::before { content: '◆'; font-size: 8px; }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      color: #111;
+      margin-bottom: 10px;
+    }
+    h1 span {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: .04em;
+      margin-bottom: 28px;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .meta-item {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .meta-item strong { color: var(--text); }
+
+    /* ── NAV TABS ── */
+    .nav-wrap {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 6px rgba(0,0,0,.06);
+    }
+    nav {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      gap: 0;
+    }
+    nav a {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      height: var(--nav-h);
+      padding: 0 20px;
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      transition: color .2s, border-color .2s;
+      cursor: pointer;
+    }
+    nav a:hover { color: var(--text); }
+    nav a.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+    nav a .icon { font-size: 14px; }
+
+    /* ── CONTENT PANELS ── */
+    .panels { padding: 56px 0 100px; }
+
+    .panel { display: none; }
+    .panel.active { display: block; }
+
+    /* ── HOME PANEL ── */
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 260px;
+      gap: 48px;
+      align-items: start;
+    }
+    @media (max-width: 680px) {
+      .intro-grid { grid-template-columns: 1fr; }
+    }
+
+    .intro-text h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #111;
+      margin-bottom: 14px;
+      letter-spacing: -.01em;
+    }
+    .intro-text p {
+      color: #4a5070;
+      margin-bottom: 16px;
+    }
+
+    .objective-list {
+      list-style: none;
+      margin: 24px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .objective-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      color: #4a5070;
+      font-size: .96rem;
+    }
+    .objective-list li::before {
+      content: '→';
+      color: var(--accent);
+      font-family: 'DM Mono', monospace;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .objective-list li strong { color: var(--text); }
+
+    /* sidebar card */
+    .info-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+    }
+    .info-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: .9rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .info-card dl { display: flex; flex-direction: column; gap: 10px; }
+    .info-card dt {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .info-card dd {
+      font-family: 'Syne', sans-serif;
+      font-size: .92rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-left: 0;
+      margin-bottom: 6px;
+    }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+    .tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      background: rgba(61,95,224,.10);
+      border: 1px solid rgba(61,95,224,.22);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 8px;
+    }
+
+    /* divider */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 36px 0;
+    }
+
+    /* ── LECTURES PANEL ── */
+    .week-block { margin-bottom: 40px; }
+    .week-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    .lecture-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(180,185,210,.4);
+      transition: background .15s;
+    }
+    .lecture-row:last-child { border-bottom: none; }
+    .lec-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--muted);
+      width: 32px;
+      flex-shrink: 0;
+    }
+    .lec-info { flex: 1; }
+    .lec-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: .97rem;
+      color: var(--text);
+    }
+    .lec-desc {
+      font-size: .85rem;
+      color: var(--muted);
+      font-family: 'DM Mono', monospace;
+      margin-top: 2px;
+    }
+    .lec-badge {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+    .lec-badge.slides {
+      background: rgba(61,95,224,.10);
+      border: 1px solid rgba(61,95,224,.22);
+      color: var(--accent);
+    }
+    .lec-badge.video {
+      background: rgba(155,89,212,.10);
+      border: 1px solid rgba(155,89,212,.22);
+      color: var(--accent2);
+    }
+
+    /* ── EXAMPLES PANEL ── */
+    .examples-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .ex-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 22px;
+      transition: border-color .2s, transform .2s;
+    }
+    .ex-card:hover {
+      border-color: rgba(61,95,224,.4);
+      transform: translateY(-2px);
+    }
+    .ex-icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+    .ex-card h4 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: #111;
+      margin-bottom: 6px;
+    }
+    .ex-card p {
+      font-size: .87rem;
+      color: var(--muted);
+      font-family: 'DM Mono', monospace;
+      line-height: 1.6;
+    }
+
+    /* ── PROGRAM PANEL ── */
+    .program-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .93rem;
+    }
+    .program-table thead tr {
+      background: var(--surface);
+      border-bottom: 2px solid var(--border);
+    }
+    .program-table th {
+      font-family: 'Syne', sans-serif;
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 12px 16px;
+      text-align: left;
+    }
+    .program-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      color: #4a5070;
+      vertical-align: top;
+    }
+    .program-table td:first-child {
+      font-family: 'DM Mono', monospace;
+      font-size: .82rem;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+    .program-table tbody tr:hover td { background: rgba(0,0,0,.02); }
+    .prog-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      color: var(--text);
+      display: block;
+      margin-bottom: 2px;
+    }
+    .prog-note {
+      font-family: 'DM Mono', monospace;
+      font-size: .8rem;
+      color: var(--muted);
+    }
+
+    /* panel heading */
+    .panel-heading {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.7rem;
+      color: #111;
+      letter-spacing: -.01em;
+      margin-bottom: 6px;
+    }
+    .panel-sub {
+      font-family: 'DM Mono', monospace;
+      font-size: .82rem;
+      color: var(--muted);
+      margin-bottom: 36px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── BANNER ── -->
+<div class="banner">
+  <div class="container">
+    <div class="badge">MTech Executive IIT Jodhpur Course · 2026</div>
+    <h1>Deep <span>Learning</span></h1>
+    <p class="subtitle">DL 401 &nbsp;·&nbsp; April-July 2026 &nbsp;·&nbsp;</p>
+    <div class="meta-row">
+      <div class="meta-item">📅 <strong>Sat / Sun</strong>&nbsp; 9:45 – 11:15 PM</div>
+      <div class="meta-item">🏛️ <strong>-</strong></div>
+      <div class="meta-item">👤 Instructor: <strong>Dr. Anushka Joshi</strong></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── NAV TABS ── -->
+<div class="nav-wrap">
+  <nav>
+    <a class="active" data-panel="home" onclick="switchTab(this,'home')">
+      <span class="icon">⌂</span> Home
+    </a>
+    <a data-panel="lectures" onclick="switchTab(this,'lectures')">
+      <span class="icon">◉</span> Lectures
+    </a>
+    <a data-panel="examples" onclick="switchTab(this,'Assignment')">
+      <span class="icon">◈</span> Assignment
+    </a>
+    <a data-panel="program" onclick="switchTab(this,'Course TA')">
+      <span class="icon">▦</span> Course TA
+    </a>
+  </nav>
+</div>
+
+<!-- ── PANELS ── -->
+<div class="panels">
+  <div class="container">
+
+    <!-- HOME -->
+    <div id="home" class="panel active">
+      <div class="intro-grid">
+        <div class="intro-text">
+          <h2>Course Overview</h2>
+          <p>
+            This course provides a comprehensive introduction to deep learning — from the mathematical
+            foundations to modern architectures deployed at scale. Students will build intuition
+            through theory, implement models from scratch, and conduct rigorous experimental analysis.
+          </p>
+
+          <p>Intended to give foundational and hands-on knowledge of:</p>
+
+          <ul class="objective-list">
+            <li>
+              <div>
+                <strong>Deep learning methods</strong> — neural networks, backpropagation,
+                optimisation, convolutional networks, recurrent models, transformers, and
+                generative approaches.
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>A strong practical understanding of foundational concepts</strong> of deep
+                learning, including loss landscapes, regularisation strategies, and the art of
+                training stable models.
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Experimental analysis</strong> — designing ablation studies, reading and
+                reproducing papers, evaluating results with statistical rigour, and communicating
+                findings clearly.
+              </div>
+            </li>
+          </ul>
+
+          <hr class="divider"/>
+
+          <h2>Prerequisites</h2>
+          <p>
+            Linear algebra, probability, and multivariable calculus at an undergraduate level.
+            Proficiency in Python. Prior exposure to machine learning.
+	    
+          </p>
+	  <h2>Useful Links</h2>
+          <p>
+            Linear algebra, probability, and multivariable calculus at an undergraduate level.
+            Proficiency in Python. Prior exposure to machine learning.
+	    
+          </p>
+
+        </div>
+
+        <!-- sidebar -->
+        <aside>
+          <div class="info-card">
+            <h3>Quick Info</h3>
+            <dl>
+              <dt>Instructor</dt>
+              <dd>Dr. Anushka Joshi</dd>
+
+              <dt>Grading</dt>
+              <dd>Assignments</dd>
+
+              <dt>Topics covered</dt>
+              <dd>
+                <div class="tag-row">
+                  <span class="tag">CNNs</span>
+                  <span class="tag">RNNs</span>
+                  <span class="tag">AlexNet</span>
+                </div>
+              </dd>
+            </dl>
+          </div>
+        </aside>
+      </div>
+    </div><!-- /home -->
+
+    <!-- LECTURES -->
+    <div id="lectures" class="panel">
+      <p class="panel-heading">Lectures</p>
+      <p class="panel-sub">Slides</p>
+
+      <div class="week-block">
+        <div class="week-label">Week 1 – Foundations of CNN</div>
+        <div class="lecture-row">
+          <span class="lec-num">L01</span>
+          <div class="lec-info">
+            <div class="lec-title">CNN-I</div>
+          </div>
+          <a href="https://drive.google.com/file/d/1SbJ3T7hJP2Mg_e7IyjeORzDDAzoGXFDE/view?usp=sharing" target="_blank" class="lec-badge slides">Slides</a>
+	  <a href="https://drive.google.com/file/d/1co59IxWi4Jt7dNKHiFUKYnczC3IdI-kV/view?usp=sharing" target="_blank" class="lec-badge 	video">Video</a>
+        </div>
+        <div class="lecture-row">
+          <span class="lec-num">L02</span>
+          <div class="lec-info">
+            <div class="lec-title">CNN-II</div>
+            <div class="lec-desc"></div>
+          </div>
+          <a href="https://drive.google.com/file/d/1WjhO11xM8kYljB66tFoamADhHDdwwRj6/view?usp=sharing" target="_blank" class="lec-badge slides">Slides</a>
+          <a href="https://drive.google.com/file/d/1-YqYKJQwk5lp_kDadTGiEsUd0gItBofC/view?usp=sharing" target="_blank" class="lec-badge slides">Slides FCNN</a>
+	<a href="https://drive.google.com/file/d/1vFcM1SnMXgswPry0Nahr01x0mOK-wPNR/view?usp=sharing" target="_blank" class="lec-badge 	video">Video</a>
+        </div>
+      </div>
+
+      <div class="week-block">
+        <div class="week-label">Week 2- CNN and RNN</div>
+        <div class="lecture-row">
+          <span class="lec-num">L03</span>
+          <div class="lec-info">
+            <div class="lec-title">CNN-III (Normalizations, AlexNet)</div>
+          </div>
+          <a href="https://drive.google.com/file/d/16UY_raWDlIaBBM-vFAPtOIH1ZyvkskfP/view?usp=sharing" target="_blank" class="lec-badge slides">Slides</a>
+	  <a href="https://drive.google.com/file/d/1t_wEoe5BpAuf9bqBUchoJ3R_pT0rXhWj/view?usp=sharing" target="_blank" class="lec-badge 	video">Video</a>
+        </div>
+        <div class="lecture-row">
+          <span class="lec-num">L04</span>
+          <div class="lec-info">
+            <div class="lec-title">RNN-I (Basics)</div>
+          </div>
+          <a href="https://drive.google.com/file/d/1pEXwmtejaitTvE4qYM623495qBM3rXP9/view?usp=sharing" target="_blank" class="lec-badge 	slides">Slides</a>
+	  <a href="https://drive.google.com/file/d/1t_wEoe5BpAuf9bqBUchoJ3R_pT0rXhWj/view?usp=sharing" target="_blank" class="lec-badge 	video">Video</a>
+	  
+
+        </div>
+      </div>
+
+      <div class="week-block">
+        <div class="week-label">Week 3 – RNN vs LSTM</div>
+        <div class="lecture-row">
+          <span class="lec-num">L05</span>
+          <div class="lec-info">
+            <div class="lec-title">RNN-II (Backprop through Time)</div>
+	  </div>
+	    <a href="https://drive.google.com/file/d/1oSkZDlW4n8zV7x0ZlQsPkp3jblAjOdeC/view?usp=sharing" target="_blank" class="lec-badge 	slides">Slides</a>
+
+          
+
+        </div>
+        <div class="lecture-row">
+          <span class="lec-num">L06</span>
+          <div class="lec-info">
+            <div class="lec-title">LSTM and Attention</div>
+	  </div>
+	    <a href="https://drive.google.com/file/d/1YDXev0_VC4U38LzN2NqtLfVz5LnkJYiS/view?usp=sharing" target="_blank" class="lec-badge 	slides">Slides</a>	
+          
+
+        </div>
+      </div>
+      <div class="week-block">
+        <div class="week-label">Week 4 – Optimization</div>
+        <div class="lecture-row">
+          <span class="lec-num">L05</span>
+          <div class="lec-info">
+            <div class="lec-title">Optimization (SGD, Adam, RMSProp)</div>
+	  </div>
+	    <a href="https://drive.google.com/file/d/1Hso9olvOQQmn0CAwyIQ5fSpK6xHi5inY/view?usp=sharing" target="_blank" class="lec-badge 	slides">Slides</a>
+
+          </div>
+
+        </div>
+        <div class="lecture-row">
+          <span class="lec-num">L06</span>
+          <div class="lec-info">
+            <div class="lec-title">Quiz</div>
+	    	
+          </div>
+
+       
+      </div>
+
+      <div class="week-block">
+        <div class="week-label">Week 5 – Regularization and Graph Neural Network</div>
+	<div class="week-description">
+    		This week we will cover regularization techniques such as dropout, early stopping, mathematical foundations of regularizers, and introduction to Graph Neural Networks.
+	
+  	</div>
+        <div class="lecture-row">
+          <span class="lec-num">L05</span>
+          <div class="lec-info">
+            <div class="lec-title">Regularization (Dropout, Early Stopping, Mathematics of Regularizer)</div>
+	  </div>
+	    <a href="" target="_blank" class="lec-badge 	slides">Slides</a>
+
+          </div>
+
+        </div>
+        <div class="lecture-row">
+          <span class="lec-num">L06</span>
+          <div class="lec-info">
+            <div class="lec-title">Graph Neural Network </div>
+	    	
+          </div>
+
+        </div>
+      </div>
+    </div>	
+    <!-- /lectures -->
+
+    <!-- EXAMPLES -->
+    <div id="Assignment" class="panel">
+      <p class="panel-heading">Examples</p>
+      <p class="panel-sub"></p>
+
+      <div class="examples-grid">
+        <div class="ex-card">
+          <div class="ex-icon">🧮</div>
+          <h4>Coding Challenge Due- 13 May 2026</h4>
+          <p>Coding challenge and documentation. See <a href="https://www.kaggle.com/t/822fe1b0e0e44f36a74d3c74a56beade" target="_blank">Kaggle</a></p>
+        </div>
+        <div class="ex-card">
+          <div class="ex-icon">📊</div>
+          <h4>Problems and Coding Due- 18 May 2026</h4>
+          <p>Delivered</p>
+        </div>
+        <div class="ex-card">
+          <div class="ex-icon">🚀</div>
+          <h4>Transfer Learning</h4>
+          <p>Up coming...</p>
+        </div>
+      </div>
+    </div><!-- /examples -->
+
+    <!-- PROGRAM -->
+    <div id="Course TA" class="panel">
+      <p class="panel-heading">Program</p>
+      <p class="panel-sub">List of TAs</p>
+	<div class="ta-list">
+    		<p><strong>Prashansa Tripathi</strong> – p25ai0006@iitj.ac.in</p>
+    		<p><strong>Garima Bargujar</strong> – p25ai0003@iitj.ac.in</p>
+    	</div>
+    </div><!-- /program -->
+
+  </div><!-- /.container -->
+</div><!-- /.panels -->
+
+<footer>
+  <div>Deep Learning Course 2026 · All rights reserved</div>
+</footer>
+
+<script>
+  function switchTab(el, panelId) {
+    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+    el.classList.add('active');
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.getElementById(panelId).classList.add('active');
+  }
+</script>
+</body>
+</html>
