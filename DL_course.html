@@ -23,7 +23,7 @@
       background: var(--bg);
       color: var(--text);
       font-family: 'EB Garamond', Georgia, serif;
-      font-size: 18px;
+      font-size: 15px;
       line-height: 1.75;
       min-height: 100vh;
     }
@@ -69,7 +69,7 @@
       align-items: center;
       gap: 6px;
       font-family: 'DM Mono', monospace;
-      font-size: 11px;
+      font-size: 12px;
       letter-spacing: .12em;
       text-transform: uppercase;
       color: var(--accent);
@@ -79,7 +79,7 @@
       padding: 4px 10px;
       margin-bottom: 22px;
     }
-    .badge::before { content: '◆'; font-size: 8px; }
+    .badge::before { content: '◆'; font-size: 12px; }
 
     h1 {
       font-family: 'Syne', sans-serif;
@@ -99,7 +99,7 @@
 
     .subtitle {
       font-family: 'DM Mono', monospace;
-      font-size: 13px;
+      font-size: 12px;
       color: var(--muted);
       letter-spacing: .04em;
       margin-bottom: 28px;
@@ -216,8 +216,8 @@
     /* sidebar card */
     .info-card {
       background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
+      border: 2px solid var(--border);
+      border-radius: 11px;
       padding: 24px;
     }
     .info-card h3 {
@@ -229,10 +229,10 @@
       color: var(--muted);
       margin-bottom: 16px;
     }
-    .info-card dl { display: flex; flex-direction: column; gap: 10px; }
+    .info-card dl { display: flex; flex-direction: column; gap: 2px; }
     .info-card dt {
       font-family: 'DM Mono', monospace;
-      font-size: 11px;
+      font-size: 14px;
       letter-spacing: .08em;
       text-transform: uppercase;
       color: var(--muted);
@@ -267,7 +267,7 @@
     .week-block { margin-bottom: 40px; }
     .week-label {
       font-family: 'DM Mono', monospace;
-      font-size: 11px;
+      font-size: 12px;
       letter-spacing: .12em;
       text-transform: uppercase;
       color: var(--accent);
@@ -462,6 +462,10 @@
     <a data-panel="program" onclick="switchTab(this,'Course TA')">
       <span class="icon">▦</span> Course TA
     </a>
+    <a data-panel="examples" onclick="switchTab(this,'course-memories')">
+      <span class="icon">◈</span> Course Memories
+    </a>
+
   </nav>
 </div>
 
@@ -549,14 +553,21 @@
               <dd>Dr. Anushka Joshi</dd>
 
               <dt>Grading</dt>
-              <dd>Assignments</dd>
+              <dd>Assignments| Quiz | ET Exam</dd>
 
-              <dt>Topics covered</dt>
+              <dt>Topics covered till now</dt>
               <dd>
                 <div class="tag-row">
                   <span class="tag">CNNs</span>
                   <span class="tag">RNNs</span>
                   <span class="tag">AlexNet</span>
+		  <span class="tag">LSTM</span>
+		  <span class="tag">RNN</span>
+		  <span class="tag">Attention</span>
+		  <span class="tag">Optimizers</span>
+		  <span class="tag">Regularizers</span>
+		  <span class="tag">Graphs NN</span>
+		  <span class="tag">Attention Graphs</span>	
                 </div>
               </dd>
             </dl>
@@ -639,7 +650,7 @@
       <div class="week-block">
         <div class="week-label">Week 4 – Optimization</div>
         <div class="lecture-row">
-          <span class="lec-num">L05</span>
+          <span class="lec-num">L07</span>
           <div class="lec-info">
             <div class="lec-title">Optimization (SGD, Adam, RMSProp)</div>
 	  </div>
@@ -649,7 +660,7 @@
 
         </div>
         <div class="lecture-row">
-          <span class="lec-num">L06</span>
+          <span class="lec-num">L08</span>
           <div class="lec-info">
             <div class="lec-title">Quiz</div>
 	    	
@@ -665,7 +676,7 @@
 		
   	</div>
         <div class="lecture-row">
-          <span class="lec-num">L05</span>
+          <span class="lec-num">L09</span>
           <div class="lec-info">
             <div class="lec-title">Regularization (L1, L2 Norm, NN Dropout, Early Stopping, Mathematics of Regularizer)</div>
 	  </div>
@@ -675,7 +686,7 @@
 
         </div>
         <div class="lecture-row">
-          <span class="lec-num">L06</span>
+          <span class="lec-num">L10</span>
           <div class="lec-info">
             <div class="lec-title">Graph Neural Network </div>
 		
@@ -685,8 +696,37 @@
           </div>
 		<a href="https://drive.google.com/file/d/1WWme0ALbHkqyCujenKYVX54FUSx0pkBd/view?usp=sharing" target="_blank" class="lec-badge slides">Slides</a>
         </div>
+      
+      <div class="week-block">
+        <div class="week-label">Week 6 – Graph Neural Network and Applications</div>
+	<div class="week-description">
+    			
+  	</div>
+        <div class="lecture-row">
+          <span class="lec-num">L09</span>
+          <div class="lec-info">
+            <div class="lec-title">Graph Neural Network</div>
+	  </div>
+	    <a href="" target="_blank" class="lec-badge slides">Slides</a>
+
+          </div>
+
+        </div>
+        <div class="lecture-row">
+          <span class="lec-num">L10</span>
+          <div class="lec-info">
+            <div class="lec-title">Practical Application</div>
+		
+
+          </div>
+		<a href="" target="_blank" class="lec-badge slides">Slides</a>
+        </div>
+
       </div>
-    </div>	
+      
+      
+    </div>
+    	
     <!-- /lectures -->
 
     <!-- EXAMPLES -->
@@ -722,7 +762,14 @@
     		<p><strong>Garima Bargujar</strong> – p25ai0003@iitj.ac.in</p>
     	</div>
     </div><!-- /program -->
+    <div id="course-memories" class="panel">
+    	<h2>Course Memories</h2>
 
+    	<div class="memories-gallery">
+        	<img src="Course Pic 1.jpeg" alt="Course Memory 1" width="220">
+        	<img src="Course Pic 2.jpeg" alt="Course Memory 2" width="200">
+    	</div>
+    </div>
   </div><!-- /.container -->
 </div><!-- /.panels -->
 

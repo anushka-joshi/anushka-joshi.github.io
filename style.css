@@ -133,6 +133,19 @@ body {
     display: block;
 }
 
+.memories-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.memories-gallery img {
+    width: 10px !important;
+    height: 90px !important;
+    object-fit: cover;
+}
+
 /* Gradient overlay for text readability */
 .hero::after {
     content: '';
