@@ -1,0 +1,345 @@
+<!-- Faculty student section: paste this block into your website. -->
+<style>
+  .faculty-students {
+    --fs-ink: #172b4d;
+    --fs-muted: #66758a;
+    --fs-accent: #286b78;
+    --fs-border: #e5ebf1;
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    color: var(--fs-ink);
+    padding: clamp(24px, 5vw, 56px) 0;
+  }
+
+  .faculty-students * { box-sizing: border-box; }
+
+  .faculty-students__inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .faculty-students__intro {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(26px, 5vw, 44px);
+    margin-bottom: 30px;
+    border-radius: 22px;
+    color: #fff;
+    background: linear-gradient(120deg, #183b56 0%, #286b78 58%, #5b8f8b 100%);
+  }
+
+  .faculty-students__intro::after {
+    content: "";
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    right: -65px;
+    top: -115px;
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 50%;
+    box-shadow: 0 0 0 28px rgba(255,255,255,.045),
+                0 0 0 58px rgba(255,255,255,.035);
+  }
+
+  .faculty-students__eyebrow {
+    margin: 0 0 10px;
+    color: #d5e8e7;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+  }
+
+  .faculty-students__title {
+    margin: 0;
+    color: #fff;
+    font-size: clamp(30px, 5vw, 42px);
+    line-height: 1.12;
+    font-weight: 750;
+  }
+
+  .faculty-students__subtitle {
+    max-width: 620px;
+    margin: 12px 0 0;
+    color: rgba(255,255,255,.84);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .faculty-students__section-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 0 2px 18px;
+  }
+
+  .faculty-students__section-head h3 {
+    margin: 0;
+    font-size: 21px;
+    font-weight: 700;
+  }
+
+  .faculty-students__count {
+    color: var(--fs-muted);
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .faculty-students__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .faculty-students__card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 88px;
+    padding: 17px;
+    border: 1px solid var(--fs-border);
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 5px 18px rgba(24, 49, 75, .045);
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  }
+
+  .faculty-students__card:hover {
+    transform: translateY(-3px);
+    border-color: #c5d9dc;
+    box-shadow: 0 12px 26px rgba(24, 49, 75, .09);
+  }
+
+  .faculty-students__avatar {
+    display: grid;
+    flex: 0 0 46px;
+    width: 46px;
+    height: 46px;
+    place-items: center;
+    border-radius: 14px;
+    color: #215b67;
+    background: #e8f2f1;
+    font-size: 14px;
+    font-weight: 750;
+    letter-spacing: .03em;
+  }
+
+  .faculty-students__name {
+    margin: 0;
+    color: var(--fs-ink);
+    font-size: 15px;
+    line-height: 1.45;
+    font-weight: 650;
+  }
+
+  @media (max-width: 820px) {
+    .faculty-students__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (max-width: 520px) {
+    .faculty-students__grid { grid-template-columns: 1fr; }
+    .faculty-students__section-head { align-items: center; }
+  }
+</style>
+
+<section class="faculty-students">
+  <div class="faculty-students__inner">
+    <header class="faculty-students__intro">
+      <p class="faculty-students__eyebrow">Research Group</p>
+      <h2 class="faculty-students__title">Students</h2>
+      <p class="faculty-students__subtitle">
+        Meet the students contributing to our research and academic activities.
+      </p>
+    </header>
+
+    <div class="faculty-students__section-head">
+      <h3>PhD</h3>
+      <span class="faculty-students__count">1 students</span>
+    </div>
+
+    <div class="faculty-students__grid">
+      <article class="faculty-students__card">
+        <div class="faculty-students__avatar" aria-hidden="true">VS</div>
+        <h4 class="faculty-students__name">Aakanksha Tiwari</h4>
+      </article>
+
+     
+    </div>
+  </div>
+</section>
+
+<section class="faculty-students">
+  <div class="faculty-students__inner">
+
+    <div class="faculty-students__section-head">
+      <h3>MTech Students</h3>
+      <span class="faculty-students__count">1 students</span>
+    </div>
+
+    <div class="faculty-students__grid">
+      <article class="faculty-students__card">
+        <div class="faculty-students__avatar" aria-hidden="true">VS</div>
+        <h4 class="faculty-students__name">Rajit Kheterpal (M26AIR011)</h4>
+      </article>
+
+	
+    </div>
+  </div>
+</section>
+
+
+<section class="faculty-students">
+  <div class="faculty-students__inner">
+
+    <div class="faculty-students__section-head">
+      <h3>BTech (BTP) Students</h3>
+      <span class="faculty-students__count">4 students</span>
+    </div>
+
+    <div class="faculty-students__grid">
+      <article class="faculty-students__card">
+        <div class="faculty-students__avatar" aria-hidden="true">VS</div>
+        <h4 class="faculty-students__name">Sagar Ratan Chaudhary</h4>
+      </article>
+
+      <article class="faculty-students__card">
+        <div class="faculty-students__avatar" aria-hidden="true">PT</div>
+        <h4 class="faculty-students__name">Shivam Goyal</h4>
+      </article>
+	<article class="faculty-students__card">
+        <div class="faculty-students__avatar" aria-hidden="true">PT</div>
+        <h4 class="faculty-students__name">Dhruv Mishra</h4>
+      </article>
+	<article class="faculty-students__card">
+        <div class="faculty-students__avatar" aria-hidden="true">PT</div>
+        <h4 class="faculty-students__name">Sanyam</h4>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="faculty-students">
+<div class="faculty-students__section-head">
+      <h3>BTech (Design Credit) Students</h3>
+      <span class="faculty-students__count">10 students</span>
+    </div>
+
+    <div class="faculty-students__grid">
+      <article class="faculty-students__card">
+        <div class="faculty-students__avatar" aria-hidden="true">VS</div>
+        <h4 class="faculty-students__name">Yatn Jain</h4>
+      </article>
+
+      <article class="faculty-students__card">
+        <div class="faculty-students__avatar" aria-hidden="true">PT</div>
+        <h4 class="faculty-students__name">Yatin</h4>
+      </article>
+	<article class="faculty-students__card">
+        <div class="faculty-students__avatar" aria-hidden="true">PT</div>
+        <h4 class="faculty-students__name">Yug</h4>
+      </article>
+	<article class="faculty-students__card">
+        <div class="faculty-students__avatar" aria-hidden="true">PT</div>
+        <h4 class="faculty-students__name">Veer</h4>
+      </article>
+	<article class="faculty-students__card">
+        <div class="faculty-students__avatar" aria-hidden="true">PT</div>
+        <h4 class="faculty-students__name">Hardik </h4>
+      </article>
+	<article class="faculty-students__card">
+        <div class="faculty-students__avatar" aria-hidden="true">PT</div>
+        <h4 class="faculty-students__name">Jay Patil</h4>
+      </article>
+	<article class="faculty-students__card">
+        <div class="faculty-students__avatar" aria-hidden="true">PT</div>
+        <h4 class="faculty-students__name">Ali Shaikh</h4>
+      </article>
+	<article class="faculty-students__card">
+        <div class="faculty-students__avatar" aria-hidden="true">PT</div>
+        <h4 class="faculty-students__name">Anand Jaiswal</h4>
+      </article>
+	<article class="faculty-students__card">
+        <div class="faculty-students__avatar" aria-hidden="true">PT</div>
+        <h4 class="faculty-students__name">Jayesh</h4>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="faculty-students">
+<div class="faculty-students__section-head">
+      <h3>BTech Specialization Project</h3>
+      <span class="faculty-students__count">2 students</span>
+    </div>
+
+    <div class="faculty-students__grid">
+      <article class="faculty-students__card">
+        <div class="faculty-students__avatar" aria-hidden="true">VS</div>
+        <h4 class="faculty-students__name">Arush Aaron John (B23CH1009)</h4>
+      </article>
+
+      <article class="faculty-students__card">
+        <div class="faculty-students__avatar" aria-hidden="true">PT</div>
+        <h4 class="faculty-students__name">Rohit Kumar Mourya</h4>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="faculty-students">
+    <div class="faculty-students__section-head">
+      <h3>MTech Executive Students</h3>
+      <span class="faculty-students__count">9 students</span>
+    </div>
+
+    <div class="faculty-students__grid">
+      <article class="faculty-students__card">
+        <div class="faculty-students__avatar" aria-hidden="true">VS</div>
+        <h4 class="faculty-students__name">Vikas Kumar Sahu</h4>
+      </article>
+
+      <article class="faculty-students__card">
+        <div class="faculty-students__avatar" aria-hidden="true">PT</div>
+        <h4 class="faculty-students__name">Prasun Kumar Tripathi</h4>
+      </article>
+
+      <article class="faculty-students__card">
+        <div class="faculty-students__avatar" aria-hidden="true">DD</div>
+        <h4 class="faculty-students__name">Dnyanesh Shivrajrao Deshpande</h4>
+      </article>
+
+      <article class="faculty-students__card">
+        <div class="faculty-students__avatar" aria-hidden="true">SJ</div>
+        <h4 class="faculty-students__name">Sneh Jain</h4>
+      </article>
+
+      <article class="faculty-students__card">
+        <div class="faculty-students__avatar" aria-hidden="true">VK</div>
+        <h4 class="faculty-students__name">Vikram Raju Kothwal</h4>
+      </article>
+
+      <article class="faculty-students__card">
+        <div class="faculty-students__avatar" aria-hidden="true">SY</div>
+        <h4 class="faculty-students__name">Sachin Yadav</h4>
+      </article>
+
+      <article class="faculty-students__card">
+        <div class="faculty-students__avatar" aria-hidden="true">AK</div>
+        <h4 class="faculty-students__name">Anoop G Krishnan</h4>
+      </article>
+
+      <article class="faculty-students__card">
+        <div class="faculty-students__avatar" aria-hidden="true">KG</div>
+        <h4 class="faculty-students__name">Krishna Venkata Guttula</h4>
+      </article>
+
+      <article class="faculty-students__card">
+        <div class="faculty-students__avatar" aria-hidden="true">CJ</div>
+        <h4 class="faculty-students__name">Christin Jais</h4>
+      </article>
+    </div>
+  </div>
+</section>
